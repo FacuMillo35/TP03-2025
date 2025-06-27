@@ -1,7 +1,7 @@
 const { useState } = React;
 
 function App() {
-  // Controla cuál botón está habilitado: "izquierdo" o "derecho"
+  // Controla cuál botón está habilitado
   const [habilitado, setHabilitado] = useState('izquierdo');
 
   return (
@@ -23,3 +23,4 @@ function App() {
 }
 
 ReactDOM.render(<App />, document.getElementById('root'));
+
