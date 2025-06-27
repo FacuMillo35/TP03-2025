@@ -1,21 +1,28 @@
-const num1 = document.getElementById('num1');
-const num2 = document.getElementById('num2');
+// ───── Referencias al DOM ──────────────────────────
+const num1      = document.getElementById('num1');
+const num2      = document.getElementById('num2');
 const operacion = document.getElementById('operacion');
-const btn = document.getElementById('btn-calcular');
+const btn       = document.getElementById('btn-calcular');
 const resultado = document.getElementById('resultado');
 
+// ───── Habilita / deshabilita el botón según reglas ─
 function actualizarEstadoBoton() {
-  if (operacion.value === 'dividir') {
+  const op = operacion.value;
+  const b  = parseFloat(num2.value);
+
+  // Deshabilitar solo si es división Y el segundo número es 0
+  if (op === 'dividir' && b === 0) {
     btn.disabled = true;
-    resultado.textContent = 'La división está deshabilitada.';
+    resultado.textContent = 'No se puede dividir por 0.';
   } else {
     btn.disabled = false;
-    resultado.textContent = '';
+    if (resultado.textContent === 'No se puede dividir por 0.') {
+      resultado.textContent = '';          // Limpia mensaje preventivo
+    }
   }
 }
 
-operacion.addEventListener('change', actualizarEstadoBoton);
-
+// ───── Lógica de cálculo ───────────────────────────
 btn.addEventListener('click', () => {
   const a = parseFloat(num1.value);
   const b = parseFloat(num2.value);
@@ -25,23 +32,27 @@ btn.addEventListener('click', () => {
     return;
   }
 
-  let res;
-  switch (operacion.value) {
-    case 'sumar':
-      res = a + b;
-      break;
-    case 'restar':
-      res = a - b;
-      break;
-    case 'multiplicar':
-      res = a * b;
-      break;
-    default:
-      res = undefined;
+  // Protección adicional (por si cambian números antes de pulsar)
+  if (operacion.value === 'dividir' && b === 0) {
+    resultado.textContent = 'No se puede dividir por 0.';
+    return;
   }
 
-  resultado.textContent = res !== undefined ? `Resultado: ${res}` : '';
+  let res;
+  switch (operacion.value) {
+    case 'sumar':         res = a + b; break;
+    case 'restar':        res = a - b; break;
+    case 'multiplicar':   res = a * b; break;
+    case 'dividir':       res = a / b; break;
+  }
+
+  resultado.textContent = `Resultado: ${res}`;
 });
 
-// Inicializar estado al cargar la página
-document.addEventListener('DOMContentLoaded', actualizarEstadoBoton);
+// ───── Eventos que disparan la verificación ─────────
+operacion.addEventListener('change', actualizarEstadoBoton);
+num2.addEventListener('input', actualizarEstadoBoton);
+
+// Estado inicial
+actualizarEstadoBoton();
+
