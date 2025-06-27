@@ -1,7 +1,121 @@
-body { font-family: Arial, sans-serif; margin: 2rem; }
-label { display: block; margin-bottom: .5rem; }
-input { padding: .3rem; width: 200px; }
-button { margin-left: .5rem; padding: .3rem .8rem; }
-#mensaje { color: red; margin-top: 1rem; }
-ul { margin-top: 1rem; list-style: none; padding: 0; }
-li { padding: .2rem 0; }
+:root {
+  --primary: #10b981;
+  --primary-dark: #047857;
+  --danger: #dc2626;
+  --bg: #f0fdf4;
+  --text: #064e3b;
+  --shadow: rgba(0, 0, 0, 0.08);
+  --border: #d1fae5;
+}
+
+/* ---------- Layout ---------- */
+body {
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.wrapper {
+  background: #fff;
+  padding: 2rem 2.5rem;
+  border-radius: 12px;
+  box-shadow: 0 8px 24px var(--shadow);
+  width: 380px;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+
+  /* animación de entrada */
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.6s cubic-bezier(0.22,1,0.36,1) 0.1s forwards;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+h1 {
+  margin: 0 0 .2rem;
+  font-size: 1.55rem;
+  font-weight: 600;
+  text-align: center;
+  color: var(--primary-dark);
+}
+
+/* ---------- Formulario ---------- */
+label {
+  display: flex;
+  flex-direction: column;
+  gap: .4rem;
+  font-size: .95rem;
+}
+
+input[type="text"] {
+  padding: .6rem .8rem;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: 1rem;
+  background: #f7fee7;
+  transition: border-color .25s, background .25s;
+}
+
+input[type="text"]:focus {
+  outline: none;
+  border-color: var(--primary);
+  background: #fff;
+}
+
+button {
+  align-self: flex-start;
+  padding: .65rem 1.2rem;
+  font-size: 1rem;
+  color: #fff;
+  background: var(--primary);
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background .25s, transform .1s;
+}
+
+button:hover { background: var(--primary-dark); }
+button:active { transform: scale(.96); }
+
+/* ---------- Mensajes ---------- */
+#mensaje {
+  font-weight: 600;
+  color: var(--danger);
+  text-align: center;
+}
+
+/* ---------- Lista ---------- */
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: .35rem;
+}
+
+li {
+  padding: .45rem .8rem;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: #ecfdf5;
+  animation: listItem .4s ease both;
+}
+
+@keyframes listItem {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
