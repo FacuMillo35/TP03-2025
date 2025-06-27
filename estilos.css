@@ -1,130 +1,58 @@
-.wrapper {
-    width: 100vw;
-    height: 100vh;
-    background-color: #191c32;
-    color: #fff;
-}
-.brand {
-    margin-top: -7px;
-}
-.menu a {
-    color: #fff;
-    text-decoration: none;
-    padding: 10px 20px;
-}
-.navbar {
-    display: flex;
-    justify-content: space-between;
-    padding: 2em;
-}
-.menu li {
-    list-style: none;
-}
-.menu {
-    display: flex;
-    width: 50%;
-    justify-content: space-around;
-}
-.menu .active {
-    color : aqua;
-}
-.menu a:hover {
-    background-color: aqua;
-    color: #191c32;
-    transition: ease-in 0.4s;
-}
-.main {
-    margin:  0 auto;
-    width: 80vw;
-    height: 80vh;
-    display: grid;
-    grid-template-columns: repeat(2,1fr);
-    align-items: center;
-}
-h1 {
-    font-size: 3em;
+/* Estilo general */
+body {
     margin: 0;
-}
-span {
-    color: aqua;
-}
-.descargar-cv {
-    padding: 10px 20px;
-    background-color: aqua;
-    border: none;
-    border-radius: 20px;
-    margin-top: 10px;
-    cursor: pointer;
-    box-shadow:  0px 0px 10px aqua;
-}
-.descargar-cv:hover {
-    background-color: white;
-    box-shadow: none;
-}
-.main img {
-    width: 350px;
-    height: 350px;
-    border: 7px solid aqua;
-}
-.about {
-    display: grid;
-    grid-template-columns: repeat(10,1fr);
-    width: 100vw;
-    align-items: center;
-}
-.about img {
-    width: 500px;
-    height: 500px;
-    border: 7px solid aqua;
-    grid-column: 1/5;
-}
-.about-info {
-    grid-column: 5/10;
-    padding: 3em;
-    color: #fff;
-}
-.about-info h2 {
-    font-size: 3em;
-}
-.rayita {
-    width: 60px;
-    height: 4px;
-    background-color: aqua;
-    margin-top: 10px;
-    margin-bottom: 2.5em;""
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #03214e;
+    color: #333;
 }
 
-body {
-    background-color: #191c32;
-}
-.brand {
-    color: #fff;
-}
-.contacto {
-    grid-template-columns: repeat(10,1fr);
-    width: 100vw;
-    align-items: center;
-}
-.contacto img {
-    width: 200px;
-    height: 200px;
-    border: 7px solid aqua;
-    grid-column: 1/5;
-}
-.contacto h2 {
-    color: #fff;
-}
-.contacto h3 {
-    color: #fff;
-}
-a {
-    color: #fff;
+.wrapper {
+    max-width: 1200px;
+    margin: auto;
     padding: 20px;
-    cursor: pointer;
 }
-a:hover {
-    background-color: aqua;
-    color: #191c32;
-    box-shadow: 0px 0px 10px aqua;
-    transition: ease-in 0.4s;
+
+/* Encabezado */
+header {
+    text-align: center;
+    background-color: #004080;
+    color: white;
+    padding: 30px 0;
+    border-radius: 8px;
+    margin-bottom: 30px;
+}
+
+.brand h2 {
+    margin: 0;
+    font-size: 32px;
+}
+
+/* Contenedor de tarjetas */
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    padding: 0 20px;
+}
+
+/* Tarjetas */
+.card {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: white;
+    border-radius: 10px;
+    padding: 30px;
+    text-decoration: none;
+    color: #004080;
+    font-weight: bold;
+    font-size: 18px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 16px rgba(0, 0, 0, 0.15);
 }
